@@ -1,0 +1,276 @@
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://tempuri.org/">
+    <wsdl:types>
+        <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+            <s:import namespace="http://microsoft.com/wsdl/types/"/>
+            <s:element name="AskCustoms1">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:AK1Request"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="AK1Request">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="MessageType" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="MessageBody" type="s:base64Binary"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="SignCertificate" type="s:base64Binary"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="MessageID" type="s1:guid"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="Initiator" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="Signature" type="s:base64Binary"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="SessionKey" type="s:base64Binary"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="CryptKeyID" type="s1:guid"/>
+                </s:sequence>
+            </s:complexType>
+            <s:element name="AskCustoms1Response">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="AskCustoms1Result" type="tns:AK1Response"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="AK1Response">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="MessageBody" type="s:base64Binary"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="MessageType" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="SignCertificate" type="s:base64Binary"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="Signature" type="s:base64Binary"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="ErrorNumber" type="s:int"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="RequestRegNo" type="s:long"/>
+                </s:sequence>
+            </s:complexType>
+            <s:element name="UploadImfx1">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:UI1Request"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="UI1Request">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="Content" type="s:base64Binary"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="SessionKey" type="s:base64Binary"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="CryptKeyID" type="s1:guid"/>
+                </s:sequence>
+            </s:complexType>
+            <s:element name="UploadImfx1Response">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="UploadImfx1Result" type="tns:UI1Response"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="UI1Response">
+                <s:sequence>
+                    <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" type="s:int"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string"/>
+                </s:sequence>
+            </s:complexType>
+            <s:element name="DownloadImfx1">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:DI1Request"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="DI1Request">
+                <s:sequence>
+                    <s:element minOccurs="1" maxOccurs="1" name="FileID" type="s:long"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="Signature" type="s:base64Binary"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="SessionKey" type="s:base64Binary"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="CryptKeyID" type="s1:guid"/>
+                </s:sequence>
+            </s:complexType>
+            <s:element name="DownloadImfx1Response">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="DownloadImfx1Result" type="tns:DI1Response"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="DI1Response">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="Content" type="s:base64Binary"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" type="s:int"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string"/>
+                </s:sequence>
+            </s:complexType>
+            <s:element name="GetCurRates">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GetRateRequest"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="GetRateRequest">
+                <s:sequence>
+                    <s:element minOccurs="1" maxOccurs="1" name="Date" nillable="true" type="s:dateTime"/>
+                </s:sequence>
+            </s:complexType>
+            <s:element name="GetCurRatesResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="GetCurRatesResult" type="tns:GetRateResponse"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="GetRateResponse">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="Rates" type="tns:ArrayOfRate"/>
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="ArrayOfRate">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="unbounded" name="Rate" nillable="true" type="tns:Rate"/>
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="Rate">
+                <s:sequence>
+                    <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="Abbr" type="s:string"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="Val" type="s:decimal"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="Koef" type="s:decimal"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string"/>
+                </s:sequence>
+            </s:complexType>
+        </s:schema>
+        <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+            <s:simpleType name="guid">
+                <s:restriction base="s:string">
+                    <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/>
+                </s:restriction>
+            </s:simpleType>
+        </s:schema>
+    </wsdl:types>
+    <wsdl:message name="AskCustoms1SoapIn">
+        <wsdl:part name="parameters" element="tns:AskCustoms1"/>
+    </wsdl:message>
+    <wsdl:message name="AskCustoms1SoapOut">
+        <wsdl:part name="parameters" element="tns:AskCustoms1Response"/>
+    </wsdl:message>
+    <wsdl:message name="UploadImfx1SoapIn">
+        <wsdl:part name="parameters" element="tns:UploadImfx1"/>
+    </wsdl:message>
+    <wsdl:message name="UploadImfx1SoapOut">
+        <wsdl:part name="parameters" element="tns:UploadImfx1Response"/>
+    </wsdl:message>
+    <wsdl:message name="DownloadImfx1SoapIn">
+        <wsdl:part name="parameters" element="tns:DownloadImfx1"/>
+    </wsdl:message>
+    <wsdl:message name="DownloadImfx1SoapOut">
+        <wsdl:part name="parameters" element="tns:DownloadImfx1Response"/>
+    </wsdl:message>
+    <wsdl:message name="GetCurRatesSoapIn">
+        <wsdl:part name="parameters" element="tns:GetCurRates"/>
+    </wsdl:message>
+    <wsdl:message name="GetCurRatesSoapOut">
+        <wsdl:part name="parameters" element="tns:GetCurRatesResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="AskCustomsSoap">
+        <wsdl:operation name="AskCustoms1">
+            <wsdl:input message="tns:AskCustoms1SoapIn"/>
+            <wsdl:output message="tns:AskCustoms1SoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="UploadImfx1">
+            <wsdl:input message="tns:UploadImfx1SoapIn"/>
+            <wsdl:output message="tns:UploadImfx1SoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="DownloadImfx1">
+            <wsdl:input message="tns:DownloadImfx1SoapIn"/>
+            <wsdl:output message="tns:DownloadImfx1SoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetCurRates">
+            <wsdl:input message="tns:GetCurRatesSoapIn"/>
+            <wsdl:output message="tns:GetCurRatesSoapOut"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="AskCustomsSoap" type="tns:AskCustomsSoap">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="AskCustoms1">
+            <soap:operation soapAction="http://tempuri.org/AskCustoms1" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="UploadImfx1">
+            <soap:operation soapAction="http://tempuri.org/UploadImfx1" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DownloadImfx1">
+            <soap:operation soapAction="http://tempuri.org/DownloadImfx1" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetCurRates">
+            <soap:operation soapAction="http://tempuri.org/GetCurRates" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="AskCustomsSoap12" type="tns:AskCustomsSoap">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="AskCustoms1">
+            <soap12:operation soapAction="http://tempuri.org/AskCustoms1" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="UploadImfx1">
+            <soap12:operation soapAction="http://tempuri.org/UploadImfx1" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DownloadImfx1">
+            <soap12:operation soapAction="http://tempuri.org/DownloadImfx1" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetCurRates">
+            <soap12:operation soapAction="http://tempuri.org/GetCurRates" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="AskCustoms">
+        <wsdl:port name="AskCustomsSoap" binding="tns:AskCustomsSoap">
+            <soap:address location="https://sw2.customs.gov.ua/askcustoms.asmx"/>
+        </wsdl:port>
+        <wsdl:port name="AskCustomsSoap12" binding="tns:AskCustomsSoap12">
+            <soap12:address location="https://sw2.customs.gov.ua/askcustoms.asmx"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
